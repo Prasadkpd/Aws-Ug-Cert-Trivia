@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Cert Trivia Wheel — an AWS Cloud Practitioner trivia booth game for AWS Community Day Sri Lanka, by AWS User Group Colombo." />
+    <meta name="theme-color" content="#131822" />
+    <title>Cert Trivia Wheel — AWS Community Day Sri Lanka</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/brand/awsug-colombo-logo.png" />
+
+    <!-- Fonts are self-hosted so the booth works with no network at all -->
+    <link rel="preload" href="/fonts/material-symbols-rounded.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <style>
+      /* Paint the brand background immediately so there is no white flash on
+         a projector or booth TV waking from sleep. */
+      html, body { background: #131822; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
