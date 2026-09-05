@@ -18,7 +18,7 @@ export default function Logo({ size = 'sm', className = '', ...rest }) {
     <span className={`${SIZES[size] ?? SIZES.sm} ${className}`.trim()} {...rest}>
       <img
         className="logo__img"
-        src="/brand/awsug-colombo-logo.png"
+        src="/brand/awsug-colombo-logo.jpeg"
         alt="AWS User Groups Colombo"
         width={1024}
         height={256}

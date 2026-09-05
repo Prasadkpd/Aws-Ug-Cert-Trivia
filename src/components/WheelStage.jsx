@@ -48,8 +48,8 @@ export default function WheelStage({
         </h1>
 
         <p className="wheel-stage__tagline">
-          One spin picks your topic. Answer correctly to win — three in a row
-          takes the big prize.
+          One spin picks your topic. Answer correctly to win three in a row
+          and take the big prize.
         </p>
 
         {streak > 0 && <StreakIndicator streak={streak} variant="panel" />}
