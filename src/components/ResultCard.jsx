@@ -20,6 +20,7 @@ export default function ResultCard({
   streak,
   streakWasBroken,
   onContinue,
+  autoAdvanceMs,
 }) {
   // A modest burst for a single correct answer; the big prize gets the real show.
   useEffect(() => {
@@ -84,7 +85,7 @@ export default function ResultCard({
         </div>
       ) : (
         <div className="reward-row">
-          {isCorrect ? (
+          {isCorrect && streak < TARGET ? (
             <span className="sticker">
               <Icon name="sticker" size={24} fill />
               Sticker unlocked
@@ -111,18 +112,32 @@ export default function ResultCard({
         </div>
       )}
 
-      <Button
-        size="xl"
-        variant={oneMore ? 'prize' : 'primary'}
-        icon={isCorrect ? 'spin' : 'refresh'}
-        iconFill={isCorrect}
-        fullWidth
-        pulse
-        onClick={onContinue}
-        autoFocus
-      >
-        {oneMore ? 'Spin for the win' : isCorrect ? 'Spin again' : 'Try another spin'}
-      </Button>
+      {isCorrect ? (
+        <Button
+          size="xl"
+          variant={oneMore ? 'prize' : 'primary'}
+          icon="spin"
+          iconFill
+          fullWidth
+          pulse
+          onClick={onContinue}
+          autoFocus
+        >
+          {oneMore ? 'Spin for the win' : 'Spin again'}
+        </Button>
+      ) : (
+        /* Wrong answer — turn ends automatically; show a draining timer bar
+           and a small manual-skip link so the volunteer can hurry things along. */
+        <div className="wrong-timer">
+          <div
+            className="wrong-timer__bar"
+            style={{ animationDuration: `${autoAdvanceMs}ms` }}
+          />
+          <button className="wrong-timer__skip" onClick={onContinue}>
+            End turn now →
+          </button>
+        </div>
+      )}
     </motion.section>
   );
 }

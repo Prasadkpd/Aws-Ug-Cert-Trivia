@@ -36,6 +36,9 @@ export default function App() {
   const isSpinning = phase === PHASE.SPINNING;
   const showResult = phase === PHASE.RESULT;
 
+  // How long the wrong-result card is shown before the turn ends automatically.
+  const AUTO_WRONG_MS = 60_000; // 1 minute
+
   // ── Sound cues tied to phase changes ──────────────────────────────────
   useEffect(() => {
     if (phase === PHASE.CATEGORY_REVEAL) play('categoryReveal');
@@ -47,6 +50,13 @@ export default function App() {
     play(isCorrect ? 'correct' : 'wrong');
   }, [phase, isCorrect, play]);
 
+  // Wrong answer → automatically end the turn after a brief reveal.
+  useEffect(() => {
+    if (phase !== PHASE.RESULT || isCorrect !== false) return;
+    const t = setTimeout(() => nextPlayer(), AUTO_WRONG_MS);
+    return () => clearTimeout(t);
+  }, [phase, isCorrect, nextPlayer, AUTO_WRONG_MS]);
+
   // ── Actions ───────────────────────────────────────────────────────────
   const handleStart = useCallback(() => { play('click'); startGame(); }, [play, startGame]);
 
@@ -57,7 +67,15 @@ export default function App() {
     selectAnswer(i);
   }, [selectAnswer, streak]);
 
-  const handleContinue = useCallback(() => { play('click'); continueAfterResult(); }, [play, continueAfterResult]);
+  // Correct → same player spins again. Wrong → end the turn immediately (manual skip).
+  const handleContinue = useCallback(() => {
+    play('click');
+    if (isCorrect === false) {
+      nextPlayer();
+    } else {
+      continueAfterResult();
+    }
+  }, [play, isCorrect, continueAfterResult, nextPlayer]);
 
   const handleToggleSound = useCallback(() => setSoundEnabled((s) => !s), [setSoundEnabled]);
 
@@ -119,6 +137,7 @@ export default function App() {
               showResult={showResult}
               onSelectAnswer={handleSelectAnswer}
               onContinue={handleContinue}
+              autoAdvanceMs={AUTO_WRONG_MS}
             />
           )}
         </div>

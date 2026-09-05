@@ -49,7 +49,7 @@ src/
 │   ├── VolunteerPanel.jsx    Booth stats & controls
 │   └── ...
 ├── data/
-│   └── questions.js    68 AWS Cloud Practitioner questions
+│   └── questions.js    147 AWS Cloud Practitioner questions
 ├── hooks/
 │   ├── useTriviaGame.js   Game state machine
 │   └── useSound.js        Web Audio API sound synthesis

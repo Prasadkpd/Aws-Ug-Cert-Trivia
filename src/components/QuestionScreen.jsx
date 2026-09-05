@@ -16,6 +16,7 @@ export default function QuestionScreen({
   showResult,
   onSelectAnswer,
   onContinue,
+  autoAdvanceMs,
 }) {
   return (
     <div className="q-stage">
@@ -29,6 +30,7 @@ export default function QuestionScreen({
             streak={streak}
             streakWasBroken={streakWasBroken}
             onContinue={onContinue}
+            autoAdvanceMs={autoAdvanceMs}
           />
         ) : (
           <QuestionCard
