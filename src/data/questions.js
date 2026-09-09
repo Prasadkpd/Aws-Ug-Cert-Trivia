@@ -903,11 +903,11 @@ const questions = [
     options: [
       'A compliance framework for financial services companies using AWS',
       'A physical infrastructure design guide for AWS data centers',
-      'A set of best practices across five pillars for building secure, efficient, resilient cloud architectures',
+      'A set of best practices across six pillars for building secure, efficient, resilient cloud architectures',
       'A deployment tool for automating infrastructure provisioning',
     ],
     correctAnswer: 2,
-    explanation: 'The AWS Well-Architected Framework provides best practices across five pillars: Operational Excellence, Security, Reliability, Performance Efficiency, and Cost Optimization — helping you build cloud architectures the right way.',
+    explanation: 'The AWS Well-Architected Framework provides best practices across six pillars: Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability — helping you build cloud architectures the right way.',
     difficulty: 'Medium',
   },
   {
@@ -958,12 +958,12 @@ const questions = [
     question: 'What is AWS Trusted Advisor?',
     options: [
       'A human consultant AWS assigns to enterprise customers',
-      'An automated tool that checks your AWS environment against best practices across five categories',
+      'An automated tool that checks your AWS environment against best practices across six categories',
       'An AI that writes CloudFormation templates for you',
       'A service for reviewing third-party software running on AWS',
     ],
     correctAnswer: 1,
-    explanation: 'AWS Trusted Advisor is an automated service that inspects your AWS environment and makes recommendations across five categories: Cost Optimization, Performance, Security, Fault Tolerance, and Service Limits.',
+    explanation: 'AWS Trusted Advisor is an automated service that inspects your AWS environment and makes recommendations across six categories: Cost Optimization, Performance, Security, Resilience, Operational Excellence, and Service Limits.',
     difficulty: 'Medium',
   },
   {
